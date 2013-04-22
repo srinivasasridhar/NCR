@@ -111,9 +111,9 @@ Ext.application(
                 { xtype: 'button', id: 'btnBack', iconMask: true, align: 'left', ui: 'back', text: 'Back', handler: hideNew, hidden: true }
                 ]
             },
-            { id: 'list', html: '<div><center><h1>No Records found.</h1></center></div>', showAnimation: 'slideIn',hideAnimation: 'slideOut'},
+            { id: 'list', html: '<div><center><h1>No Records found.</h1></center></div>', showAnimation: 'slideIn', hideAnimation: 'slideOut' },
             {
-                xtype: 'fieldset', hidden: 'true', id: 'addNewForm', 
+                xtype: 'fieldset', hidden: 'true', id: 'addNewForm',
                 showAnimation: 'slideIn',
                 hideAnimation: 'slideOut',
                 items:
@@ -179,8 +179,15 @@ Ext.application(
             if (vals.isUpdate != "0") {
                 db.transaction(function (tx) {
                     tx.executeSql('UPDATE tblNCRDetails SET subject=\'' + vals.subject + '\', priority=\'' + vals.priority + '\', sbu=\'' + vals.sbu + '\', severity= \'' + vals.severity + '\', desc= \'' + vals.desc + '\'  WHERE id =\'' + vals.isUpdate + '\'');
-                    vals.isUpdate = "0";
-
+                    //vals.isUpdate = "0";
+                    formPanel.setValues({
+                        subject: '',
+                        desc: '',
+                        priority: '',
+                        sbu: '',
+                        severity: '',
+                        isUpdate: '0'
+                    });
                 });
                 showTable();
 
