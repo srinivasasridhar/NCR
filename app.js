@@ -111,11 +111,11 @@ Ext.application(
                 { xtype: 'button', id: 'btnBack', iconMask: true, align: 'left', ui: 'back', text: 'Back', handler: hideNew, hidden: true }
                 ]
             },
-            { id: 'list', html: '<div><center><h1>No Records found.</h1></center></div>', showAnimation: 'slideIn', hideAnimation: 'slideOut' },
+            { id: 'list', html: '<div><center><h1>No Records found.</h1></center></div>', showAnimation: 'flip',/*showAnimation: 'slideIn', hideAnimation: 'slideOut'*/ },
             {
                 xtype: 'fieldset', hidden: 'true', id: 'addNewForm',
-                showAnimation: 'slideIn',
-                hideAnimation: 'slideOut',
+                showAnimation: 'flip',
+                /*hideAnimation: 'flip',*/
                 items:
                 [
                  { xtype: 'textfield', name: 'subject', label: 'Subject', placeHolder: 'Subject of NCR', labelWidth: '40%' },
