@@ -10,7 +10,7 @@ db.transaction(function (tx) {
 });
 
 var showEdit;
-
+ 
 var showNew = function () {
     var box = Ext.getCmp('addNewForm');
     box.show();
@@ -27,7 +27,6 @@ var showNew = function () {
     var btnAdd = Ext.getCmp('btnAdd');
     btnAdd.setHidden(true);
 }
-
 
 var hideNew = function () {
     var addBox = Ext.getCmp('addNewForm');
@@ -107,7 +106,20 @@ Ext.application(
             { xtype: 'titlebar', title: 'Offline NCR (POC)', docked: 'top',
                 items:
                 [
-                { xtype: 'button', id: 'btnAdd', iconMask: true, align: 'right', iconCls: 'add', handler: showNew },
+                { xtype: 'button', id: 'btnAdd', iconMask: true, align: 'right', iconCls: 'add', handler: 
+                function()
+                { 
+                showNew(); 
+                 formPanel.setValues({
+                        subject: '',
+                        desc: '',
+                        priority: '',
+                        sbu: '',
+                        severity: '',
+                        isUpdate: '0'
+                    });
+                }
+                },
                 { xtype: 'button', id: 'btnBack', iconMask: true, align: 'left', ui: 'back', text: 'Back', handler: hideNew, hidden: true }
                 ]
             },
@@ -223,10 +235,9 @@ Ext.application(
 
                 }, null)
             });
-
-
-
         }
+
+
 
     }
 });
