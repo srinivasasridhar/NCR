@@ -4,10 +4,7 @@
 var isNew = "1";
 var updateId = "0";
 
-var db = openDatabase('NCR', '1.0', 'dbNCR', 2 * 1024 * 1024);
-db.transaction(function (tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS tblNCRDetails (id unique, subject,priority,sbu,severity,desc)');
-});
+
 
 var showEdit;
  
@@ -123,11 +120,11 @@ Ext.application(
                 { xtype: 'button', id: 'btnBack', iconMask: true, align: 'left', ui: 'back', text: 'Back', handler: hideNew, hidden: true }
                 ]
             },
-            { id: 'list', html: '<div><center><h1>No Records found.</h1></center></div>', showAnimation: 'flip',/*showAnimation: 'slideIn', hideAnimation: 'slideOut'*/ },
+            { id: 'list', html: '<div><center><h1>No Records found.</h1></center></div>', /*showAnimation: 'flip',showAnimation: 'slideIn', hideAnimation: 'slideOut'*/ },
             {
                 xtype: 'fieldset', hidden: 'true', id: 'addNewForm',
-                showAnimation: 'flip',
-                /*hideAnimation: 'flip',*/
+                /*showAnimation: 'flip',
+                hideAnimation: 'flip',*/
                 items:
                 [
                  { xtype: 'textfield', name: 'subject', label: 'Subject', placeHolder: 'Subject of NCR', labelWidth: '40%' },
@@ -140,7 +137,7 @@ Ext.application(
                             { text: 'High', value: '3' }
                             ]
                 },
-                { xtype: 'selectfield', name: 'sbu',
+                { xtype: 'selectfield', name: 'sbu', id:'sbu',
                     label: 'SBU', labelWidth: '40%',
                     options: [
                             { text: 'INDIA', value: '1' },
@@ -153,7 +150,7 @@ Ext.application(
 
                             ]
                 },
-                { xtype: 'selectfield', name: 'severity',
+                { xtype: 'selectfield', name: 'severity', id:'severity',
                     label: 'Severity of Defect', labelWidth: '40%',
                     options: [
                             { text: 'OMS-Commissioning', value: '0' },
@@ -168,8 +165,7 @@ Ext.application(
 
                 ]
             },
-    { xtype: 'panel', items: [{ xtype: 'button', name: 'Submit', text: 'Submit', id: 'btnSubmit', hidden: 'true', showAnimation: 'slideIn',
-        hideAnimation: 'slideOut',
+    { xtype: 'panel', items: [{ xtype: 'button', name: 'Submit', text: 'Submit', id: 'btnSubmit', hidden: 'true', /*showAnimation: 'slideIn', hideAnimation: 'slideOut',*/
         handler: function () {
             var formVals = JSON.stringify(formPanel.getValues(), null, 2);
             var vals = Ext.JSON.decode(formVals);
@@ -214,7 +210,21 @@ Ext.application(
     ]
         });
 
+        var options = '';
+        var sbu = Ext.getCmp('sbu');
+        var severity = Ext.getCmp('severity');
+
+        for (i = 1; i <= 1000; i++) 
+        {
+            options += '{text:' + i + ',value:' + i + '},';
+        }
+        options = Ext.decode('[' + options+ ']');
+        sbu.setOptions(options);
+        severity.setOptions(options);
+        
         showTable();
+
+
 
         showEdit = function (id) {
             db.transaction(function (tx) {

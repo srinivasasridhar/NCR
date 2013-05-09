@@ -68,7 +68,7 @@
     -->
   
   <!-- Define app icon for each platform. -->
-  <icon src="ncr.png" />
+  <icon src="ncr.png"  width="57" height="57" />
   <!--<icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
   <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
   <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
@@ -84,10 +84,10 @@
   <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />-->
 
   <!-- Define app splash screen for each platform. -->
-  <gap:splash src="PORT.png"  gap:platform="android" gap:density="ldpi" />
-  <gap:splash src="PORT.png"  gap:platform="android" gap:density="mdpi" />
-  <gap:splash src="PORT.png"  gap:platform="android" gap:density="hdpi" />
-  <gap:splash src="PORT.png"  gap:platform="android" gap:density="xhdpi" />
+  <gap:splash src="PORT.png"  gap:platform="android" gap:density="ldpi"  width="114" height="114"/>
+  <gap:splash src="PORT.png"  gap:platform="android" gap:density="mdpi"  width="114" height="114"/>
+  <gap:splash src="PORT.png"  gap:platform="android" gap:density="hdpi"  width="114" height="114"/>
+  <gap:splash src="PORT.png"  gap:platform="android" gap:density="xhdpi"  width="114" height="114"/>
   <gap:splash src="PORT.png"  gap:platform="blackberry" />
   <gap:splash src="PORT.png"  gap:platform="ios"     width="320" height="480" />
   <gap:splash src="PORT.png"  gap:platform="ios"     width="640" height="960" />

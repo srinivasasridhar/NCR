@@ -1,13 +1,24 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
     <meta name="default-theme-mobile-web-app-capable" content="yes" />
-   <!-- <link href="../touch/resources/css/sencha-touch.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="../touch/resources/css/sencha-touch.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../touch/builds/sencha-touch-all.js"></script>-->
-     <link href="apple.css" rel="stylesheet" type="text/css" />
+    <!--<link href="../touch/resources/css/light-theme.css" rel="stylesheet" type="text/css" />-->
+    <link href="apple.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="sencha-touch-all.js"></script>
+    <script language="javascript" type="text/javascript">
+        var db = openDatabase('NCR', '1.0', 'dbNCR', 2 * 1024 * 1024);
+        db.transaction(function (tx) {
+            //Transaction Table
+            tx.executeSql('CREATE TABLE IF NOT EXISTS tblNCRDetails (id unique, subject,priority,sbu,severity,desc)');
+            
+
+        });
+    </script>
+
+    <!--<script type="text/javascript" src="common.js"></script>-->
     <script src="app.js" type="text/javascript"></script>
     <style type="text/css">
         table
@@ -25,7 +36,6 @@
             /*padding: 2px 10px;*/
             padding: 2px 10px 4px 10px;
             text-align: center;
-            
         }
         table td
         {
@@ -107,7 +117,7 @@
             font-family: arial;
             font-size: 15px;
             font-weight: bold;
-             padding: 0px 8px;
+            padding: 0px 8px;
             text-decoration: none;
             text-shadow: 1px 1px 0px #ffffff;
         }
@@ -143,6 +153,5 @@
     </style>
 </head>
 <body>
-
 </body>
 </html>
